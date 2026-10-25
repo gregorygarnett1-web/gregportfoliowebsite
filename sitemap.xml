@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Replace https://YOUR-DOMAIN.example with the published site's canonical origin. -->
+  <url><loc>https://YOUR-DOMAIN.example/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/services/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/work/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/about/</loc></url>
+  <url><loc>https://YOUR-DOMAIN.example/contact/</loc></url>
+</urlset>
