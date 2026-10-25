@@ -14,6 +14,8 @@ python3 -m http.server 8000
 
 Then visit `http://localhost:8000`. The site has no package installation or build step.
 
+All page and asset links are relative or repository-base-aware, so the same files work on a domain root and on GitHub Pages project URLs such as `https://username.github.io/repository/`.
+
 ## Contact form setup
 
 The form validates the required name, email, and project details fields accessibly. It does **not** send messages until a provider or server endpoint is configured. No message is stored or transmitted by the current implementation.
