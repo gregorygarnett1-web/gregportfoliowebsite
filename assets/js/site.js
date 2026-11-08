@@ -1,12 +1,12 @@
 (() => {
   const path = location.pathname.replace(/\/$/, "") || "/";
-  const routes = ["services", "work", "about", "contact"];
+  const routes = ["services", "work", "about", "contact", "booking"];
   const segments = location.pathname.split("/").filter(Boolean);
   if (segments.at(-1) === "index.html" || routes.includes(segments.at(-1))) segments.pop();
   const basePath = `/${segments.length ? `${segments.join("/")}/` : ""}`;
   const siteUrl = target => `${basePath}${target.replace(/^\/+/, "")}`;
   const page = path === basePath.replace(/\/$/, "") || path === "/" ? "home" : path.split("/").pop();
-  const navItems = [["Home",""],["Services","services/"],["Work","work/"],["About","about/"],["Contact","contact/"]];
+  const navItems = [["Home",""],["Services","services/"],["Work","work/"],["About","about/"],["Contact","contact/"],["Book a call","booking/"]];
   const header = document.querySelector("#site-header");
   if (header) header.innerHTML = `<header class="site-header"><div class="nav-wrap"><a class="brand" href="${siteUrl("")}" aria-label="Greg Garnett home">Greg Garnett<small>Web Development • UI/UX</small></a><button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button><nav class="nav-links" id="primary-navigation" aria-label="Primary navigation">${navItems.map(([name,target])=>`<a href="${siteUrl(target)}"${(target === "" ? page === "home" : page === target.replace(/\/$/, "")) ? ' aria-current="page"' : ""}>${name}</a>`).join("")}<a class="button button-primary" href="${siteUrl("contact/")}">Start a project <span aria-hidden="true">↗</span></a></nav></div></header>`;
   const toggle = document.querySelector(".menu-toggle"), nav = document.querySelector(".nav-links");

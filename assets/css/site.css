@@ -38,4 +38,7 @@ html{background:#09131e}body{color:#eaf3fb;background:#09131e;background-image:r
 @keyframes orbit-pulse{from{transform:scale(.96);opacity:.5}to{transform:scale(1.04);opacity:1}}
 @keyframes sparkle{0%,100%{transform:rotate(0) scale(1);opacity:.7}50%{transform:rotate(35deg) scale(1.14);opacity:1}}
 @media(max-width:700px){.nav-links{background:#0d1b28;border-color:#2a4051}.nav-links>a:not(.button){border-color:#ffffff12}.hero-art{border-radius:22px}.cta-card{background:linear-gradient(145deg,#10283a,#133449)}}
+.booking-section{padding-top:12px;padding-bottom:90px}
+#my-cal-inline-30min{width:100%;min-height:720px;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow)}
+@media(max-width:700px){.booking-section{padding-top:0;padding-bottom:55px}#my-cal-inline-30min{min-height:760px;border-radius:12px}}
 @media(prefers-reduced-motion:reduce){.hero:before,.art-orbit,.art-sparkle{animation:none}}

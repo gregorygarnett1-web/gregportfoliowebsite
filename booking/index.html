@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Choose a time to talk with Greg Garnett about your website or digital experience project.">
+  <meta property="og:title" content="Book a Call | Greg Garnett">
+  <meta property="og:description" content="Schedule a 30-minute conversation about your project.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#10243a">
+  <title>Book a Call | Greg Garnett</title>
+  <link rel="stylesheet" href="../assets/css/site.css">
+  <script defer src="../assets/js/config.js"></script>
+  <script defer src="../assets/js/data.js"></script>
+  <script defer src="../assets/js/site.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="eyebrow">BOOK A CONVERSATION</p>
+        <h1>Let’s find a time to talk.</h1>
+        <p class="lead">Choose a 30-minute time that works for you. We can discuss your project, goals, and possible next steps.</p>
+      </div>
+    </section>
+    <section class="content-section wrap booking-section" aria-label="Schedule a 30-minute call">
+      <div id="my-cal-inline-30min"></div>
+      <script>
+        (function (C, A, L) {
+          let p = function (a, ar) { a.q.push(ar); };
+          let d = C.document;
+          C.Cal = C.Cal || function () {
+            let cal = C.Cal;
+            let ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () { p(api, arguments); };
+              const namespace = ar[1];
+              api.q = api.q || [];
+              if (typeof namespace === "string") {
+                cal.ns[namespace] = cal.ns[namespace] || api;
+                p(cal.ns[namespace], ar);
+                p(cal, ["initNamespace", namespace]);
+              } else p(cal, ar);
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
+        Cal("init", "30min", { origin: "https://app.cal.com" });
+        Cal.config = Cal.config || {};
+        Cal.config.forwardQueryParams = true;
+        Cal.ns["30min"]("inline", {
+          elementOrSelector: "#my-cal-inline-30min",
+          config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+          calLink: "greg-garnett-attbsz/30min"
+        });
+        Cal.ns["30min"]("ui", { hideEventTypeDetails: false, layout: "month_view" });
+      </script>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+</body>
+</html>
