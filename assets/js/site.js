@@ -42,8 +42,8 @@
       const submit = form.querySelector('[type="submit"]');
       if (submit.disabled) return;
       submit.disabled = true; submit.textContent = "Sending…"; status.className="form-status"; status.textContent="Sending your inquiry…";
-      fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(Object.fromEntries(new FormData(form))) })
-        .then(response => { if (!response.ok) throw new Error("Request failed"); status.className="form-status form-status-success"; status.textContent="Thanks for reaching out. Your inquiry was sent."; form.reset(); form.querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute("aria-invalid")); })
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) })
+        .then(() => { status.className="form-status"; status.textContent="Your submission request was sent to Google Sheets. This page cannot confirm that it was saved, so please check the sheet if you need to verify it."; form.reset(); form.querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute("aria-invalid")); })
         .catch(() => { status.className="form-status"; status.textContent="Your inquiry could not be sent. Please try again later."; })
         .finally(() => { submit.disabled = false; submit.innerHTML = 'Review inquiry <span aria-hidden="true">↗</span>'; });
     });

@@ -20,7 +20,20 @@ All page and asset links are relative or repository-base-aware, so the same file
 
 The form validates the required name, email, and project details fields accessibly. It does **not** send messages until a provider or server endpoint is configured. No message is stored or transmitted by the current implementation.
 
-To connect it, update `window.SITE_CONFIG.formEndpoint` in `assets/js/config.js` and update the submit handler in `assets/js/site.js` to POST the form data to that endpoint, handle loading and failures, and show success only after a successful provider response. Keep provider secrets on the server or in the provider dashboard; never put secrets in browser code. Add provider-supported spam protection and any required consent language before launch. Test a real end-to-end submission before describing the form as active.
+To send inquiries to Google Sheets, follow the setup below. The endpoint URL is public browser-side configuration; do not put Google credentials or other secrets in this repository.
+
+### Google Sheets contact form setup
+
+1. Create a Google Sheet for inquiries. Copy the ID from its URL: the text between `/d/` and `/edit`.
+2. In the sheet, open **Extensions → Apps Script**. Replace the editor contents with `google-apps-script/Code.gs`.
+3. In `Code.gs`, replace `PASTE_YOUR_GOOGLE_SHEET_ID_HERE` with the copied ID. Save the project.
+4. In Apps Script, choose **Deploy → New deployment**, select the gear icon, and choose **Web app**.
+5. Set **Execute as** to **Me**. Set **Who has access** to **Anyone**, then select **Deploy** and authorize the script when Google prompts you.
+6. Copy the deployed web app URL ending in `/exec` (not the `/dev` test URL).
+7. Paste that URL into `formEndpoint` in `assets/js/config.js`, commit, and push the site. The contact form sends the listed fields to a `Contact submissions` sheet tab, creating the tab and its headers if needed.
+8. Submit a test inquiry on the live contact page and check the sheet. The browser cannot read the Apps Script response because the cross-origin request uses `no-cors`; the on-page message says the request was sent but cannot confirm that the row was saved. Verify the row in the sheet. If the Apps Script code changes later, create a new deployment version or update the existing deployment so the live `/exec` endpoint uses it.
+
+The web app must be accessible to anyone for the public site to submit without a Google sign-in. Keep the spreadsheet private and do not share its access with the public. This endpoint has no CAPTCHA or strong abuse protection; add spam protection before relying on it for high-volume or sensitive inquiries. Avoid collecting highly sensitive personal information through this form.
 
 ## Replace before publishing
 
