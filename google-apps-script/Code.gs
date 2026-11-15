@@ -1,7 +1,7 @@
 // Google Apps Script endpoint for the Greg Garnett portfolio contact form.
 // Paste this into a Google Apps Script project and set SPREADSHEET_ID below.
 
-const SPREADSHEET_ID = "PASTE_YOUR_GOOGLE_SHEET_ID_HERE";
+const SPREADSHEET_ID = "1hSMZaLzWISv7YCpulGaSi4SsNwo7CIntFJVbJqjK9sI";
 const SHEET_NAME = "Contact submissions";
 const HEADERS = [
   "Submitted at",
