@@ -15,6 +15,17 @@ const HEADERS = [
   "Project details"
 ];
 
+// Run once from the Apps Script editor to authorize access and create the tab.
+function setupSheet() {
+  const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = spreadsheet.getSheetByName(SHEET_NAME) || spreadsheet.insertSheet(SHEET_NAME);
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(HEADERS);
+    sheet.setFrozenRows(1);
+  }
+  return sheet.getName();
+}
+
 function doPost(e) {
   try {
     const data = (e && e.parameter) || {};
