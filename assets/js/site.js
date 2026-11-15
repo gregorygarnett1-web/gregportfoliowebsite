@@ -43,7 +43,7 @@
       if (submit.disabled) return;
       submit.disabled = true; submit.textContent = "Sending…"; status.className="form-status"; status.textContent="Sending your inquiry…";
       fetch(endpoint, { method: "POST", mode: "no-cors", body: new URLSearchParams(new FormData(form)) })
-        .then(() => { status.className="form-status"; status.textContent="Your submission request was sent to Google Sheets. This page cannot confirm that it was saved, so please check the sheet if you need to verify it."; form.reset(); form.querySelectorAll('[aria-invalid]').forEach(input => input.removeAttribute("aria-invalid")); })
+        .then(() => { status.className="form-status"; status.textContent="Your request was sent. This page cannot confirm that it was saved, so check the Google Sheet before trying again. Your entries are still here."; })
         .catch(() => { status.className="form-status"; status.textContent="Your inquiry could not be sent. Please try again later."; })
         .finally(() => { submit.disabled = false; submit.innerHTML = 'Review inquiry <span aria-hidden="true">↗</span>'; });
     });
